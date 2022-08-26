@@ -1,4 +1,4 @@
 export enum StatusUser {
-    ENABLED = "Activo",
-    DISABLED = "Desativado"
-};
+  ENABLED = 'Activo',
+  DISABLED = 'Desativado',
+}

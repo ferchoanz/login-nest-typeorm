@@ -1,4 +1,9 @@
-import { Injectable, NestMiddleware, RequestMethod, UnauthorizedException } from '@nestjs/common';
+import {
+  Injectable,
+  NestMiddleware,
+  RequestMethod,
+  UnauthorizedException,
+} from '@nestjs/common';
 import { RouteInfo } from '@nestjs/common/interfaces';
 import { NextFunction, Request, Response } from 'express';
 import { verify } from 'jsonwebtoken';
@@ -12,7 +17,9 @@ export class AuthMiddleware implements NestMiddleware {
       throw new UnauthorizedException();
     }
 
-    token = token.startsWith('Bearer ') ? token = token.slice(7, token.length) : token;
+    token = token.startsWith('Bearer ')
+      ? (token = token.slice(7, token.length))
+      : token;
 
     verify(token, process.env.APP_KEY, (error, decode) => {
       if (error) {

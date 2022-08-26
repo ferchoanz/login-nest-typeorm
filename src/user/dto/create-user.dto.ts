@@ -3,26 +3,24 @@ import { StatusUser } from '../../entities/StatusUser.enum';
 import { IsString, IsEmail, IsOptional, IsEnum } from 'class-validator';
 
 export class CreateUserDto {
+  @IsString()
+  name: string;
 
-    @IsString()
+  @IsOptional()
+  @IsString()
+  username: string;
 
-    name: string;
+  @IsEmail()
+  email: string;
 
-    @IsOptional()
-    @IsString()
-    username: string;
+  @IsString()
+  password: string;
 
-    @IsEmail()
-    email: string;
+  @IsOptional()
+  @IsEnum(TypeUser)
+  type: TypeUser;
 
-    @IsString()
-    password: string;
-
-    @IsOptional()
-    @IsEnum(TypeUser)
-    type: TypeUser;
-
-    @IsOptional()
-    @IsEnum(StatusUser)
-    status: StatusUser;
+  @IsOptional()
+  @IsEnum(StatusUser)
+  status: StatusUser;
 }

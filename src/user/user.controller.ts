@@ -6,22 +6,21 @@ import { CreateUserDto } from './dto/create-user.dto';
 
 @Controller('users')
 export class UserController {
+  constructor(private service: UserService) {}
 
-    constructor(private service: UserService) {}
+  @Get()
+  async findAll() {
+    return await this.service.findAll();
+  }
 
-    @Get()
-    async findAll() {
-        return await this.service.findAll();
-    }
+  @Post()
+  async create(@Body() createUserDto: CreateUserDto) {
+    return await this.service.create(createUserDto);
+  }
 
-    @Post()
-    async create(@Body() createUserDto: CreateUserDto) {
-        return await this.service.create(createUserDto);
-    }
-
-    @Post('login')
-    @HttpCode(200)
-    async login(@Body() authUserDto: AuthUserDto) {
-        return await this.service.login(authUserDto);
-    }
+  @Post('login')
+  @HttpCode(200)
+  async login(@Body() authUserDto: AuthUserDto) {
+    return await this.service.login(authUserDto);
+  }
 }

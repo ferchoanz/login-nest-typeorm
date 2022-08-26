@@ -1,4 +1,4 @@
 export enum RelationWithFarm {
-    OWNER_ADMIN = "Dueño/",
-    ADMIN = "Admin"
-};
+  OWNER_ADMIN = 'Dueño/',
+  ADMIN = 'Admin',
+}
